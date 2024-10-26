@@ -1,3 +1,7 @@
+# React Jobly
+
+React Front-End and Authentication Demo
+
 # Component Design
 
 1. Home Page
@@ -23,7 +27,9 @@
      2. JobDetail
         - Shows detailed information about a specific job.
         
-  -- To Do
+### To Do
+  ---
+
 9. Admin
    - Admin dashboard for managing companies, jobs, and users.
    1. ManageCompanies
@@ -36,7 +42,8 @@
 
   ---
 
-  To Run:
-  
+  **To Run**
+
 - `npm run start` - in chdir to `Express-Jobly`
-  `npm run start` - in chdir to `React-Jobly`
+
+- `npm run start` - in chdir to `React-Jobly`
