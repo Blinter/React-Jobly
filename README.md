@@ -37,7 +37,6 @@
   ---
 
   To Run:
-  Both running on localhost:
   
-  npm run start - in chdir to Express-Jobly
-  npm run start - in chdir to React-Jobly
+- `npm run start` - in chdir to `Express-Jobly`
+  `npm run start` - in chdir to `React-Jobly`
