@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/jobFilter.json",
+  "title": "Search Job Filter Schema",
+  "description": "A schema to validate job search parameters",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Exact match on job title being searched"
+    },
+    "titleLike": {
+      "type": "string",
+      "description": "Partial match on job title being searched"
+    },
+    "minSalary": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "string",
+          "pattern": "^[\\d-]+$",
+          "minimum": 0
+        }
+      ],
+      "description": "The salary minimum of a job being searched. Must be a non-negative number."
+    },
+    "hasEquity": { 
+      "oneOf": [
+        {
+          "type": "boolean",
+          "enum": [true, false]
+        },
+        {
+          "type": "string",
+          "enum": ["true", "false"]
+        }
+      ],
+      "description": "Filter jobs that include equity. Can be true or false."
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/companyHandleOnly.json",
+  "title": "Handle Only Company Schema",
+  "description": "A schema to validate company handle parameters",
+  "type": "object",
+  "properties": {
+    "handle": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 25,
+      "pattern": "^[a-zA-Z0-9 '-]+$",
+      "description": "Unique handle for the Company"
+    }
+  },
+  "required": ["handle"],
+  "additionalProperties": false
+}

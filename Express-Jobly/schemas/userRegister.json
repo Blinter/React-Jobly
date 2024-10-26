@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/userRegister.json",
+  "title": "Register New User Schema",
+  "description": "Schema for validating new user registration data",
+  "type": "object",
+  "properties": {
+    "username": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 30,
+      "description": "Unique username for the user being registered"
+    },
+    "password": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 20,
+      "description": "Password for the user being registered"
+    },
+    "firstName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 30,
+      "pattern": "^[a-zA-Z'-]+$",
+      "description": "First Name for the user being registered"
+    },
+    "lastName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 30,
+      "pattern": "^[a-zA-Z'-]+$",
+      "description": "Last Name for the user being registered"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "minLength": 6,
+      "maxLength": 60,
+      "pattern": "^[a-z0-9._%+\\-]+@[a-z0-9.-]+\\.[a-z]{2,4}$",
+      "transform": ["toLowerCase"],
+      "description": "E-Mail for the user being registered"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "username",
+    "firstName",
+    "lastName",
+    "password",
+    "email"
+  ]
+}

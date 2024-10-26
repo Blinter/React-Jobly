@@ -1,0 +1,66 @@
+nav {
+  /* Set the background color of the navigation to black */
+  background-color: black;
+  /* Add a box shadow to create a raised effect */
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.nav-item {
+  /* Set a fixed width for navigation items */
+  width: 100px;
+  /* Center align the text within navigation items */
+  text-align: center;
+}
+
+nav a {
+  /* Set the text color for links to a light grey */
+  color: #f0f2f5;
+  /* Remove the default text underline */
+  text-decoration: none;
+}
+
+nav a.active {
+  /* Set the text color for active links to a light grey */
+  color: #f0f2f5;
+  /* Make the font bold to highlight active links */
+  font-weight: bold;
+  /* Add a dotted border at the bottom of the active link */
+  border-bottom: 5px dotted;
+  /* Include the border in the element's total width and height */
+  box-sizing: border-box;
+}
+
+nav a.active:hover {
+  /* Maintain the text color for active links on hover */
+  color: #f0f2f5 !important;
+}
+
+nav a:hover {
+  /* Ensure no text decoration on links when hovered */
+  text-decoration: none;
+  /* Change the text color on hover */
+  color: #f0f2f5 !important;
+}
+
+nav a.navbar-brand {
+  /* Set the brand link's color to a light grey */
+  color: #f0f2f5 !important;
+}
+
+nav a.navbar-brand.active {
+  /* Remove bottom border for active brand link */
+  border-bottom: none;
+  /* Keep the color for active brand links */
+  color: #f0f2f5 !important;
+}
+
+nav a.navbar-brand:hover {
+  /* Maintain the brand link's text color on hover */
+  color: #f0f2f5 !important;
+}
+
+nav a:not(.navbar-brand):hover {
+  /* Make non-brand links bold on hover */
+  font-weight: bold;
+}

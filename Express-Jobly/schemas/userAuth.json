@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/userAuth.json",
+  "title": "User Authentication Schema",
+  "description": "Schema for validating user authentication data",
+  "type": "object",
+  "properties": {
+    "username": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 30,
+      "description": "Unique username of the user for authentication"
+    },
+    "password": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 20,
+      "description": "Password of the user for authentication"
+     }
+  },
+  "additionalProperties": false,
+  "required": [
+    "username",
+    "password"
+  ]
+}

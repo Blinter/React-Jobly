@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/companyNew.json",
+  "title": "New Company Schema",
+  "description": "A schema to validate new company parameters",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Name of the Company"
+    },
+    "handle": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 25,
+      "pattern": "^[a-zA-Z0-9 '-]+$",
+      "description": "Unique handle for the Company"
+    },
+    "description": {
+      "type": "string"
+    },
+    "numEmployees": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "string",
+          "pattern": "^[\\d-]+$",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "The minimum number of employees. Must be a non-negative integer greater than 0."
+    },
+    "logoUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Logo or Picture for the Company"
+    }
+  },
+  "required": ["handle", "name"],
+  "additionalProperties": false
+}

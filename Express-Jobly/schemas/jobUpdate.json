@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/jobUpdate.json",
+  "title": "Update Job Schema",
+  "description": "A schema to validate updated job parameters",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Title for the job"
+    },
+    "salary": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "string",
+          "pattern": "^[\\d-]+$",
+          "minimum": 0
+        }
+      ],
+      "description": "The salary posted by a job. Must be a non-negative number."
+    },
+    "equity": {
+      "oneOf": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMaximum": 1.0
+        },
+        {
+          "type": "string",
+          "pattern": "^0*(?:0\\.\\d+|0\\.?|1\\.0*|0*1\\.0*)$"
+        }
+      ],
+      "description": "The equity share posted by a job. Must be a non-negative decimal greater than 0 and less than 1.0."
+    }
+  },
+  "required": [],
+  "additionalProperties": false
+}

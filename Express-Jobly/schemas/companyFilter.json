@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/companyFilter.json",
+  "title": "Company Search Filter Schema",
+  "description": "A schema to validate company filter parameters for searching companies based on employee count and name.",
+  "type": "object",
+  "properties": {
+    "minEmployees": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "string",
+          "pattern": "^[\\d-]+$",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "The minimum number of employees. Must be a non-negative integer."
+    },
+    "maxEmployees": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "string",
+          "pattern": "^[\\d-]+$",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "The maximum number of employees. Must be a non-negative integer."
+    },
+    "nameLike": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-zA-Z0-9 '-]+$",
+      "description": "A string to match against company names. Can contain letters, numbers, spaces, hyphens, and apostrophes."
+    }
+  },
+  "additionalProperties": false,
+  "required": [],
+  "if": {
+    "properties": {
+      "minEmployees": {}
+    },
+    "required": ["minEmployees"]
+  },
+  "then": {
+    "properties": {
+      "maxEmployees": {
+        "exclusiveMinimum": { "$data": "1/minEmployees" }
+      }
+    }
+  }
+}

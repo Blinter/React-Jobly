@@ -1,0 +1,54 @@
+main {
+  width: 100vw; /* Full viewport width */
+  display: flex; /* Flexbox container */
+  flex-direction: column; /* Vertical stacking of children */
+  align-items: center; /* Center children horizontally */
+  padding-top: 15vh; /* Top padding as a percentage of viewport height */
+  height: calc(100vh - 56px); /* Full viewport height minus navbar */
+  overflow: scroll; /* Enable scrolling */
+  color: white; /* Font color white */
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif; /* Cross-platform font stack */
+  -webkit-font-smoothing: antialiased; /* Smoother font on Safari */
+  -moz-osx-font-smoothing: grayscale; /* Smoother font on Firefox */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* No scrolling */
+  background-image: url("../src/assets/pexels-fotios-photos-1024359.jpg"); /* Background image */
+  background-size: cover; /* Cover the entire container */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+}
+
+.card {
+  border-radius: 0; /* No rounded corners */
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2); /* Shadow for elevation effect */
+  margin-bottom: 15vh; /* Bottom margin as a percentage of viewport height */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace; /* Monospace font for code elements */
+}
+
+.text-overlay {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.7
+  ); /* Semi-transparent white background */
+  padding: 10px; /* Padding for text overlay */
+  margin-bottom: 10px; /* Bottom margin */
+}
+
+.order-container {
+  position: relative; /* Positioned relative to its normal position */
+  z-index: 1; /* Layering index */
+}

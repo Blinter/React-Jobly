@@ -1,0 +1,34 @@
+{
+    "$schema": "http://json-schema.org/draft/2020-12/schema",
+    "$id": "schemas/userApplication.json",
+    "title": "New User Job Application Schema",
+    "description": "Schema for validating user job application data",
+    "type": "object",
+    "properties": {
+      "username": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 25,
+        "description": "Unique username for the user"
+      },
+      "jobId": {
+        "oneOf": [
+          {
+            "type": "integer",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "pattern": "^[\\d-]+$",
+            "minimum": 0
+          }
+        ],
+        "description": "The ID of a job. Must be a non-negative number."
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "username",
+      "jobId"
+    ]
+  }

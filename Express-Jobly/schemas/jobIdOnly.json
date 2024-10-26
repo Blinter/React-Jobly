@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/jobIdOnly.json",
+  "title": "Update Job Schema",
+  "description": "A schema to validate job ID parameter",
+  "type": "object",
+  "properties": {
+    "id": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "string",
+          "pattern": "^[\\d-]+$",
+          "minimum": 0
+        }
+      ],
+      "description": "The ID of a job. Must be a non-negative number."
+    }
+  },
+  "required": ["id"],
+  "additionalProperties": false
+}

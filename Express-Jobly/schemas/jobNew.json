@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/jobNew.json",
+  "title": "New Job Schema",
+  "description": "A schema to validate new job parameters",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The title of the new job (Required)"
+    },
+    "companyHandle": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 25,
+      "pattern": "^[a-z0-9]+$",
+      "description": "The company handle to associate the new Job (Required)"
+    
+    },
+    "salary": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "string",
+          "pattern": "^[\\d-]+$",
+          "minimum": 0
+        }
+      ],
+      "description": "The salary posted by a job. Must be a non-negative number."
+    },
+    "equity": {
+      "oneOf": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMaximum": 1.0
+        },
+        {
+          "type": "string",
+          "pattern": "^0*(?:0\\.\\d+|0\\.?|1\\.0*|0*1\\.0*)$"
+        }
+      ],
+      "description": "The equity share posted by a job. Must be a non-negative decimal greater than 0."
+    }
+  },
+  "required": ["title", "companyHandle"],
+  "additionalProperties": false
+}

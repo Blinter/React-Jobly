@@ -1,0 +1,82 @@
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { useParams, useNavigate } from "react-router-dom";
+import JoblyApi from './JoblyApi';
+import { Container, Row, Col, Card, CardBody, CardTitle, CardHeader, CardFooter, Button, ListGroup } from "reactstrap";
+
+function JobDetail({ cantFind }) {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const validRequest = id.length;
+  const [currentCompany, setCompany] = useState([]);
+  useEffect(() => {
+    if (!validRequest)
+      navigate(cantFind, { replace: true });
+    const fetchCompany = async () => {
+      try {
+        const response = await JoblyApi.getJob(id);
+        console.log(response);
+        if (!response || !response.company) {
+          setCompany([]);
+          return;
+        }
+        setCompany(response.company);
+        console.log(response.company);
+      } catch (error) {
+        console.error("Company not found! ", error);
+      }
+    };
+    fetchCompany();
+  }, [validRequest, cantFind, navigate]);
+  const getJobs = () => {
+    if (!currentCompany.jobs || !currentCompany.jobs.length)
+      return;
+
+    return (
+      <>
+        <CardBody>
+          <Row className="text-bold border-bottom mb-2">
+            <Col xs="4">Title</Col>
+            <Col xs="3">Salary</Col>
+            <Col xs="3">Equity</Col>
+            <Col xs="2">Apply</Col>
+          </Row>
+        </CardBody>
+        {currentCompany.jobs.map(job => (
+          <CompanyJob key={job.id} job={job} />
+        ))}
+      </>
+    );
+  }
+
+  return (
+    <Container>
+      <Row className="justify-content-center">
+        <Col md="8">
+          <Card className="my-4">
+            <CardHeader className="bg-primary text-white text-center">
+              <h2>{currentCompany.name}</h2>
+            </CardHeader>
+            <CardBody>
+              <ListGroup>
+                <p>{currentCompany.description}</p>
+                <p><strong>Employees:</strong> {currentCompany.numEmployees}</p>
+              </ListGroup>
+            </CardBody>
+          </Card><Card className="my-4">
+            <CardHeader className="bg-primary text-white text-center">
+              <h2>Jobs</h2>
+            </CardHeader>
+            {getJobs()}
+          </Card>
+        </Col>
+      </Row>
+    </Container>
+  );
+}
+
+CompanyDetail.propTypes = {
+  cantFind: PropTypes.string.isRequired,
+};
+
+export default CompanyDetail;
